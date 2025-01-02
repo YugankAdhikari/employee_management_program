@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="container"> <!-- Use existing container class -->
+        <h1>Attendance Records for {{ selected_date }}</h1>
+        <form method="POST">
+            <label for="date">Select Date:</label>
+            <input type="date" name="date" required>
+            <button type="submit" class="btn">View</button> <!-- Added class "btn" here -->
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record[0] }}</td>
+                        <td>{{ record[1] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button id="theme-toggle" class="btn">🌙</button> <!-- Theme toggle button -->
+    <button class="btn back-button" onclick="window.location.href='{{ url_for('menu') }}'">←</button> <!-- Back button -->
+    <div class="watermark">Made by Yugank Adhikari</div> <!-- Watermark -->
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Include your existing JS for theme toggle -->
+</body>
+</html>

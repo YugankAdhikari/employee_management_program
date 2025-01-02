@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="employee-container">
+        <h1>Mark Attendance for {{ today }}</h1>
+        <form method="POST" class="employee-form">
+            {% for employee in employees %}
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="attendance" value="{{ employee[0] }}">
+                        <span class="checkbox-custom"></span> <!-- Custom checkbox span -->
+                        {{ employee[1] }} (ID: {{ employee[0] }})
+                    </label>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn submit-button">Submit Attendance</button>
+        </form>
+    </div>
+
+    <button id="theme-toggle">🌙</button> <!-- Theme toggle button -->
+    <button class="btn back-button" onclick="window.location.href='{{ url_for('menu') }}'">←</button> <!-- Back button -->
+    <div class="watermark">Made by Yugank Adhikari</div> <!-- Watermark -->
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Include JS for theme toggle -->
+</body>
+</html>

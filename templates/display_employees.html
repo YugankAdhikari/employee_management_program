@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="employee-container"> <!-- Use the new employee container -->
+        <h1>Employee Records</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Post</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record[0] }}</td>
+                        <td>{{ record[1] }}</td>
+                        <td>{{ record[2] }}</td>
+                        <td>{{ record[3] }}</td>
+                        <td>{{ record[4] }}</td>
+                        <td>{{ record[5] }}</td>
+                        <td>{{ record[6] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button id="theme-toggle">🌙</button> <!-- Theme toggle button -->
+    <button class="btn back-button" onclick="window.location.href='{{ url_for('menu') }}'">←</button> <!-- Back button -->
+    <div class="watermark">Made by Yugank Adhikari</div> <!-- Watermark -->
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Include JS for theme toggle -->
+</body>
+</html>

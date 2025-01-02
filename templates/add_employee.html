@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+</head>
+<body>
+    <div class="container"> <!-- Use existing container class -->
+        <h1>Add Employee</h1>
+        <form action="/add_employee" method="post">
+            <input type="text" name="emp_id" placeholder="Employee ID" required>
+            <input type="text" name="emp_name" placeholder="Employee Name" required>
+            <input type="email" name="email_id" placeholder="Email ID" required>
+            <input type="tel" name="phone_no" placeholder="Phone Number" required>
+            <input type="text" name="address" placeholder="Address">
+            <input type="text" name="post" placeholder="Post">
+            <input type="number" name="salary" placeholder="Salary" required>
+            <button type="submit" class="btn">Add Employee</button> <!-- Added class "btn" here -->
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <button id="theme-toggle" class="btn">🌙</button> <!-- Theme toggle button -->
+    <button class="btn back-button" onclick="window.location.href='{{ url_for('menu') }}'">←</button> <!-- Back button -->
+    <div class="watermark">Made by Yugank Adhikari</div> <!-- Watermark -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Include JS for theme toggle -->
+</body>
+</html>

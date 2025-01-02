@@ -1,0 +1,707 @@
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333; /* Default text color for light mode */
+    background: #f0f4f8; /* Light mode background */
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a4d); /* Dark purple-blue gradient */
+    color: #ffffff; /* White text for dark mode */
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: background 0.3s; /* Smooth transition */
+    position: relative; /* Make sure the container is positioned relatively for the pseudo-element */
+    overflow: hidden; /* Ensure the glow doesn't overflow outside the container */
+    border-radius: 10px; /* Optional: rounded corners */
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Adjust as needed */
+    left: -10px; /* Adjust as needed */
+    right: -10px; /* Adjust as needed */
+    bottom: -10px; /* Adjust as needed */
+    border-radius: 10px; /* Match the container's border radius */
+    background: rgba(255, 255, 255, 0.2); /* Light color for the glow */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3); /* Adjust the glow effect */
+    animation: pulsate 2s infinite; /* Pulsating effect */
+    z-index: -1; /* Place it behind the container */
+}
+body.dark-mode .login-container {
+    background: rgba(255, 255, 255, 0.1); /* Dark mode semi-transparent background */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff; /* Light mode input background */
+    color: #333; /* Light mode input text color */
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"] {
+    background: rgba(255, 255, 255, 0.2); /* Dark mode semi-transparent input background */
+    color: #ffffff; /* Dark mode input text color */
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #aaa; /* Light gray placeholder text */
+}
+
+body.dark-mode input[type="text"]::placeholder,
+body.dark-mode input[type="password"]::placeholder {
+    color: #ddd; /* Light gray placeholder text in dark mode */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+#theme-toggle {
+    position: fixed; /* Fix the button to the corner */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    z-index: 1; /* Ensure it's on top of other elements */
+    background-color: #5cb85c; /* Green button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    font-size: 24px; /* Larger font size for visibility */
+    padding: 0; /* Remove padding to maintain size */
+    display: flex; /* Use flex to center the icon/text */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+    transition: background 0.3s; /* Smooth transition */
+}
+
+#theme-toggle:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+
+.watermark {
+    position: fixed; /* Fix the watermark to the bottom */
+    bottom: 10px;
+    left: 50%; /* Center the watermark horizontally */
+    transform: translateX(-50%);
+    color: #aaa; /* Light gray watermark text */
+    font-size: 14px;
+    z-index: 1; /* Ensure it's on top of other elements */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    color: #ffcccc; /* Light red for error messages */
+}
+
+/* Menu styles */
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow : 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    transition: background 0.3s; /* Smooth transition */
+    max-width: 400px; /* Limit the width of the container */
+    width: 100%; /* Allow it to be responsive */
+}
+
+body.dark-mode .container {
+    background: rgba(255, 255, 255, 0.1); /* Dark mode semi-transparent background */
+}
+
+.menu-items {
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Space between menu items */
+}
+
+.menu-item {
+    display: block; /* Make it behave like a block element */
+    background-color: transparent; /* No background, as the glow will be the focus */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Padding for the button */
+    border-radius: 12px; /* Match the button's border radius */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Make each button take the full width of the container */
+    max-width: 300px; /* Optional: set a max width for the buttons */
+    text-align: center; /* Center text */
+    transition: background 0.3s; /* Smooth transition */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Optional: add a subtle shadow */
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight background on hover */
+}
+/* Add these styles to your existing CSS */
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for inputs */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    background: #ffffff; /* Light mode input background */
+    color: #333; /* Light mode input text color */
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark-mode input[type="email"],
+body.dark-mode input[type="tel"],
+body.dark-mode input[type="number"] {
+    background: rgba(255, 255, 255, 0.2); /* Dark mode semi-transparent input background */
+    color: #ffffff; /* Dark mode input text color */
+}
+
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="number"]::placeholder {
+    color: #aaa; /* Light gray placeholder text */
+}
+
+body.dark-mode input[type="email"]::placeholder,
+body.dark-mode input[type="tel"]::placeholder,
+body.dark-mode input[type="number"]::placeholder {
+    color: #ddd; /* Light gray placeholder text in dark mode */
+}
+
+/* New container for employee information */
+/* Base styles for the employee container */
+.employee-container {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Center text within the container */
+    padding: 30px; /* Padding for internal spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    max-width: 800px; /* Maximum width for the employee container */
+    width: 90%; /* Responsive width */
+    margin: 20px auto; /* Center the container */
+}
+
+/* Dark mode styles for employee container */
+body.dark-mode .employee-container {
+    background: rgba(255, 255, 255, 0.2); /* Lighter background for dark mode */
+    color: white; /* Text color for dark mode */
+}
+
+/* Employee info styles */
+.employee-info {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Centering table content */
+.employee-container table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Remove gaps between cells */
+    margin-top: 20px; /* Space above the table */
+}
+
+.employee-container th, 
+.employee-container td {
+    text-align: center; /* Center text in table headers and cells */
+    padding: 10px; /* Padding for table cells */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+/* Responsive styles for table */
+@media (max-width: 600px) {
+    .employee-container table {
+        font-size: 14px; /* Smaller font size for small screens */
+    }
+}
+
+body.dark-mode .employee-container th, 
+body.dark-mode .employee-container td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border in dark mode */
+}
+
+/* Input styles */
+/* Form styles */
+.employee-form {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 20px; /* Space above the form */
+    width: 100%; /* Full width for the form */
+    max-width: 400px; /* Maximum width for the form */
+}
+
+/* Individual form group styles */
+.form-group {
+    width: 100%; /* Full width for each form group */
+    margin: 10px 0; /* Margin between form groups */
+}
+
+/* Input styles */
+.employee-form input {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ddd; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .employee-container {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    .employee-form {
+        max-width: 90%; /* Allow form to take more width on smaller screens */
+    }
+
+    .employee-card {
+        max-width: 100%; /* Ensure cards are responsive */
+    }
+}
+
+/* Styles for the Promote Employee page */
+
+/* Container for the promote employee form */
+.promote-employee-container {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Center text within the container */
+    padding: 30px; /* Padding for internal spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    max-width: 600px; /* Maximum width for the container */
+    width: 90%; /* Responsive width */
+    margin: 20px auto; /* Center the container */
+}
+
+/* Dark mode styles for the promote employee container */
+body.dark-mode .promote-employee-container {
+    background: rgba(255, 255, 255, 0.2); /* Lighter background for dark mode */
+    color: white; /* Text color for dark mode */
+}
+
+/* Form styles specific to the promote employee page */
+.promote-employee-form {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: center; /* Center items horizontally */
+    width: 100%; /* Full width for the form */
+}
+
+/* Individual form group styles for the promote employee form */
+.promote-form-group {
+    width: 100%; /* Full width for each form group */
+    margin: 10px 0; /* Margin between form groups */
+}
+
+/* Input styles specific to the promote employee form */
+.promote-employee-form input {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ddd; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Button styles specific to the promote employee form */
+.promote-employee-form button {
+    padding: 10px 20px; /* Padding for button */
+    background-color: #5cb85c; /* Green button */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above the button */
+}
+
+/* Button hover effect */
+.promote-employee-form button:hover {
+    background-color: #4cae4c; /* Darker shade on hover */
+}
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a4d); /* Dark purple-blue gradient */
+    color: #ffffff; /* White text for dark mode */
+}
+
+/* Dark mode styles for the promote employee container */
+body.dark-mode .promote-employee-container {
+    background: rgba(255, 255, 255, 0.1); /* Dark mode semi-transparent background */
+    color: #ffffff; /* White text for dark mode */
+}
+
+/* Dark mode styles for input fields */
+body.dark-mode .promote-employee-form input {
+    background: rgba(255, 255, 255, 0.2); /* Dark mode semi-transparent input background */
+    color: #ffffff; /* Dark mode input text color */
+}
+
+/* Dark mode styles for buttons */
+body.dark-mode .promote-employee-form button {
+    background-color: #4cae4c; /* Darker green for dark mode button */
+}
+
+/* Dark mode button hover effect */
+body.dark-mode .promote-employee-form button:hover {
+    background-color: #3e8e3e; /* Even darker green on hover */
+}
+/* Container for the form */
+.remove-employee-container {
+    background: #ffffff; /* White background for light mode */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px; /* Fixed width for the form */
+    text-align: center;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align labels to the left */
+}
+
+/* Input field styling */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Submit button styling */
+.submit-button {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode .remove-employee-container {
+    background: #1e1e1e; /* Dark background for the form */
+    color: #ffffff; /* Light text */
+}
+
+body.dark-mode input[type="text"] {
+    background: rgba(255, 255, 255, 0.2); /* Dark mode input background */
+    color: #ffffff; /* Light input text */
+    border: 1px solid #444; /* Darker border */
+}
+
+body.dark-mode .submit-button {
+    background-color: #4cae4c; /* Darker button color for dark mode */
+}
+
+body.dark-mode .submit-button:hover {
+    background-color: #3e8e3e; /* Even darker button on hover */
+}
+/* Container for the search form */
+.search-employee-container {
+    background: #ffffff; /* White background for light mode */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px; /* Fixed width for the form */
+    text-align: center;
+    margin: 20px auto; /* Center the container */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align labels to the left */
+}
+
+/* Input field styling */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Submit button styling */
+.submit-button {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode .search-employee-container {
+    background: #1e1e1e; /* Dark background for the form */
+    color: #ffffff; /* Light text */
+}
+
+body.dark-mode input[type="text"] {
+    background: rgba(255, 255, 255, 0.2); /* Dark mode input background */
+    color: #ffffff; /* Light input text */
+    border: 1px solid #444; /* Darker border */
+}
+
+body.dark-mode .submit-button {
+    background-color: #4cae4c; /* Darker button color for dark mode */
+}
+
+body.dark-mode .submit-button:hover {
+    background-color: #3e8e3e; /* Even darker button on hover */
+}
+
+/* Employee details styling */
+.employee-details {
+    margin-top: 20px;
+    text-align: left; /* Align text to the left */
+}
+/* Glowing Button Styles */
+.btn {
+    margin: 10px 0; /* Adjust margin as needed */
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+}
+
+.btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #10c23d;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+/* Glow Effect */
+.btn::before {
+    content: "";
+    background: linear-gradient(
+        45deg,
+        #00d0ff, #c117db, #0f0cb8c3, #d30da1,
+        #00FFD5, #002BFF, #FF00C8, #680a62
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height:  calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+@keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
+
+/* Hover Effect */
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn:active:after {
+    background: transparent;
+}
+
+.btn:active {
+    color: #000;
+    font-weight: bold;
+}
+.logout-button, .back-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 50px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    border: none; /* No border */
+    background-color: transparent; /* Transparent background */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 24px; /* Font size for the icon */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+/* Position the back button to the left of the logout button */
+.back-button {
+    left: 20px; /* Adjusted position to be next to logout */
+}
+
+/*all doneeee*/
+
+/* Additional styles for the attendance form */
+.employee-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start */
+}
+
+.form-group {
+    margin: 10px 0; /* Space between each checkbox */
+}
+
+.submit-button {
+    background-color: #5cb85c; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+/* Custom checkbox styles */
+.checkbox-label {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 10px; /* Padding around the label */
+    border-radius: 4px; /* Rounded corners */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+.checkbox-label:hover {
+    background-color: rgba(92, 184, 92, 0.2); /* Light green background on hover */
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-custom {
+    width: 20px; /* Width of the custom checkbox */
+    height: 20px; /* Height of the custom checkbox */
+    border: 2px solid #5cb85c; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 10px; /* Space between checkbox and label text */
+    position: relative; /* Position for the checkmark */
+    background-color: white; /* Background color */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    background-color: #5cb85c; /* Background color when checked */
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: ''; /* Create a checkmark */
+    position: absolute; /* Position it absolutely */
+    left: 5px; /* Position from the left */
+    top: 2px; /* Position from the top */
+    width: 5px; /* Width of the checkmark */
+    height: 10px; /* Height of the checkmark */
+    border: solid white; /* White checkmark */
+    border-width: 0 2px 2px 0; /* Create a checkmark shape */
+    transform: rotate(45deg); /* Rotate to form a checkmark */
+}
+/* Table styles */
+table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Remove gaps between cells */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    text-align: center; /* Center text in table headers and cells */
+    padding: 10px; /* Padding for table cells */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+th {
+    background-color: #5cb85c; /* Header background color */
+    color: white; /* Header text color */
+}
+
+/* Responsive styles for table */
+@media (max-width: 600px) {
+    table {
+        font-size: 14px; /* Smaller font size for small screens */
+    }
+}

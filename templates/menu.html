@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Menu</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Menu</h1>
+        <div class="menu-items">
+            {% if role == 'admin' %}
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('add_employee') }}'">Add Employee</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('display_employees') }}'">Display Employees</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('update_employee') }}'">Update Employee</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('promote_employee') }}'">Promote Employee</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('remove_employee') }}'">Remove Employee</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('search_employee') }}'">Search Employee</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('attendance') }}'">Mark Attendance</div>
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('view_attendance') }}'">View Attendance</div>
+
+            {% else %}
+                <div class="menu-item btn" onclick="window.location.href='{{ url_for('search_employee') }}'">Search Employee</div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <button id="theme-toggle" class="btn">🌙</button> <!-- Toggle Button with an icon -->
+    
+    <!-- Logout Button -->
+    <button class="btn logout-button" onclick="window.location.href='{{ url_for('login') }}'" style="position: absolute; bottom: 20px; left: 20px;">Logout</button>
+
+    <div class="watermark">made by yugank adhikari</div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

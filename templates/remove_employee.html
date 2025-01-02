@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Link to your CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <title>Remove Employee</title>
+</head>
+<body>
+    <button id="theme-toggle" class="btn">🌙</button> <!-- Theme toggle button with class -->
+    <div class="watermark">made by yugank adhikari</div> <!-- Watermark or branding -->
+    <button class="btn back-button" onclick="window.location.href='{{ url_for('menu') }}'">←</button> <!-- Back button -->
+    
+    <div class="remove-employee-container"> <!-- Updated class name -->
+        <h1>Remove Employee</h1>
+        <form method="POST" class="remove-employee-form">
+            <div class="form-group">
+                <label for="emp_id">Employee ID:</label>
+                <input type="text" id="emp_id" name="emp_id" required>
+            </div>
+            <button type="submit" class="btn">Remove Employee</button> <!-- Added class "btn" here -->
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Your custom script for dark mode -->
+</body>
+</html>
